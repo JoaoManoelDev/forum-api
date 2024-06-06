@@ -1,7 +1,7 @@
 {
   "name": "forum-api",
   "version": "1.0.0",
-  "description": "## Domain - Tudo gira em volta de domínio (Area de entendimento)",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
