@@ -1,5 +1,3 @@
-import { describe, expect, it } from "vitest"
-
 import { AnswerQuestionUseCase } from "@/domain/use-cases/answer-question"
 import { AnswersRepository } from "@/domain/repositories/answers-repository"
 
