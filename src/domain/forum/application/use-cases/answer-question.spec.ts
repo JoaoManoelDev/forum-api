@@ -1,5 +1,5 @@
-import { AnswerQuestionUseCase } from "@/domain/use-cases/answer-question"
-import { AnswersRepository } from "@/domain/repositories/answers-repository"
+import { AnswerQuestionUseCase } from "@/domain/forum/application/use-cases/answer-question"
+import { AnswersRepository } from "@/domain/forum/application/repositories/answers-repository"
 
 const fakeAnswersRepository: AnswersRepository = {
   async create() {
