@@ -11,7 +11,7 @@ describe("Answer Use Case", () => {
   it("should be able create an answer", async () => {
     const answerQuestion = new AnswerQuestionUseCase(fakeAnswersRepository)
 
-    const answer = await answerQuestion.execute({
+    const { answer } = await answerQuestion.execute({
       questionId: "1",
       instructorId: "1",
       content: "New Answer"

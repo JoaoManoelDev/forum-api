@@ -57,7 +57,7 @@ export class Question extends Entity<QuestionProps> {
   }
 
   set title(title: string) {
-    this.title = title
+    this.props.title = title
     this.props.slug = Slug.createFromText(title)
     this.touch()
   }
