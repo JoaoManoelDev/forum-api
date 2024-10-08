@@ -12,7 +12,6 @@ interface CreateQuestionUseCaseResponse {
   question: Question
 }
 
-
 export class CreateQuestionUseCase {
   constructor(private questionRepository: QuestionsRepository) {}
 
