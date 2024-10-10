@@ -20,7 +20,7 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
   }
 
   async findById(questionId: string): Promise<Question | null> {
-    const question = this.questions.findLast((question) => question.id.toString() === questionId)
+    const question = this.questions.find((question) => question.id.toString() === questionId)
 
     if (!question) {
       return null
@@ -29,8 +29,8 @@ export class InMemoryQuestionsRepository implements QuestionsRepository {
     return question
   }
 
-  async delete(newQuestion: Question): Promise<void> {
-    const questionIndex = this.questions.findIndex((question) => question.id === newQuestion.id)
+  async delete(questionDelete: Question): Promise<void> {
+    const questionIndex = this.questions.findIndex((question) => question.id === questionDelete.id)
 
     this.questions.splice(questionIndex, 1)
   }
