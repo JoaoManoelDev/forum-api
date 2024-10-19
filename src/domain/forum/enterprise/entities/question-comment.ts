@@ -13,7 +13,7 @@ export class QuestionComment extends Comment<QuestionCommentProps> {
 
   static create(
     props: Optional<QuestionCommentProps, 'createdAt'>,
-    id: UniqueEntityID
+    id?: UniqueEntityID
   ) {
     const questionComment = new QuestionComment({
       ...props,
