@@ -2,8 +2,6 @@ import { InMemoryQuestionsComments } from "@/test/repositories/in-memory-questio
 import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-questions-repository"
 import { CommentOnQuestionUseCase } from "./comment-on-question"
 import { MakeQuestion } from "@/test/factories/make-question"
-import { UniqueEntityID } from "@/core/entities/unique-entity-id"
-
 
 let questionsCommentsRepository: InMemoryQuestionsComments
 let questionsRepository: InMemoryQuestionsRepository
@@ -24,10 +22,10 @@ describe("Comment On Question Use Case", () => {
     await sut.execute({
       authorId: "author-01",
       questionId: question.id.toString(),
-      content: "new comment question",
+      content: "new question comment",
     })
 
     expect(questionsCommentsRepository.questionsComments).toHaveLength(1)
-    expect(questionsCommentsRepository.questionsComments[0].content).toEqual("new comment question")
+    expect(questionsCommentsRepository.questionsComments[0].content).toEqual("new question comment")
   })
 })

@@ -12,8 +12,8 @@ export class AnswerComment extends Comment<AnswerCommentProps> {
   }
 
   static create(
-    props: Optional<AnswerComment, 'createdAt'>,
-    id: UniqueEntityID
+    props: Optional<AnswerCommentProps, 'createdAt'>,
+    id?: UniqueEntityID
   ) {
     const answerComment = new AnswerComment({
       ...props,
