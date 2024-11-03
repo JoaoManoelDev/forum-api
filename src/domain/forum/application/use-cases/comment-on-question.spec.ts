@@ -1,17 +1,17 @@
-import { InMemoryQuestionsCommentsRepository } from "@/test/repositories/in-memory-questions-comments-repository"
+import { InMemoryQuestionCommentsRepository } from "@/test/repositories/in-memory-question-comments-repository"
 import { InMemoryQuestionsRepository } from "@/test/repositories/in-memory-questions-repository"
 import { CommentOnQuestionUseCase } from "./comment-on-question"
 import { MakeQuestion } from "@/test/factories/make-question"
 
-let questionsCommentsRepository: InMemoryQuestionsCommentsRepository
+let questionCommentsRepository: InMemoryQuestionCommentsRepository
 let questionsRepository: InMemoryQuestionsRepository
 let sut: CommentOnQuestionUseCase
 
 describe("Comment On Question Use Case", () => {
   beforeEach(() => {
     questionsRepository = new InMemoryQuestionsRepository()
-    questionsCommentsRepository = new InMemoryQuestionsCommentsRepository()
-    sut = new CommentOnQuestionUseCase(questionsRepository, questionsCommentsRepository)
+    questionCommentsRepository = new InMemoryQuestionCommentsRepository()
+    sut = new CommentOnQuestionUseCase(questionsRepository, questionCommentsRepository)
   })
 
   it("Should be able create a comment on question", async () => {
@@ -25,7 +25,7 @@ describe("Comment On Question Use Case", () => {
       content: "new question comment",
     })
 
-    expect(questionsCommentsRepository.questionsComments).toHaveLength(1)
-    expect(questionsCommentsRepository.questionsComments[0].content).toEqual("new question comment")
+    expect(questionCommentsRepository.questionsComments).toHaveLength(1)
+    expect(questionCommentsRepository.questionsComments[0].content).toEqual("new question comment")
   })
 })

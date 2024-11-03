@@ -1,6 +1,6 @@
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { QuestionComment } from "../../enterprise/entities/question-comment"
-import { QuestionsCommentsRepository } from "../repositories/questions-comments-repository"
+import { QuestionCommentsRepository } from "../repositories/question-comments-repository"
 import { QuestionsRepository } from "../repositories/questions-repository"
 
 interface CommentOnQuestionUseCaseRequest {
@@ -16,7 +16,7 @@ interface CommentOnQuestionUseCaseResponse {
 export class CommentOnQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
-    private questionsCommentsRepository: QuestionsCommentsRepository
+    private questionCommentsRepository: QuestionCommentsRepository
   ) {}
 
   async execute({
@@ -36,7 +36,7 @@ export class CommentOnQuestionUseCase {
       content: content
     })
 
-    this.questionsCommentsRepository.create(questionComment)
+    this.questionCommentsRepository.create(questionComment)
 
     return { questionComment }
   }
