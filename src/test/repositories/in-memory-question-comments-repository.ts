@@ -19,7 +19,7 @@ export class InMemoryQuestionCommentsRepository implements QuestionCommentsRepos
     return questionComment
   }
 
-  async findManyByQuestion(
+  async findManyByQuestionId(
     questionId: string,
     { page }: PaginationParams
   ): Promise<QuestionComment[]> {

@@ -17,7 +17,7 @@ export class ListQuestionCommentsUseCase {
     questionId,
     page
   }: ListQuestionCommentsRequest): Promise<ListQuestionCommentsResponse> {
-    const questionComments = await this.questionCommentsRepository.findManyByQuestion(
+    const questionComments = await this.questionCommentsRepository.findManyByQuestionId(
       questionId,
       { page }
     )
