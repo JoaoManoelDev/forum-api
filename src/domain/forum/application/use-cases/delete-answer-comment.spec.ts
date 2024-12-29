@@ -2,6 +2,7 @@ import { InMemoryAnswersCommentsRepository } from "@/test/repositories/in-memory
 import { makeAnswerComment } from "@/test/factories/make-answer-comment"
 import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 import { AnswerCommentUseCase } from "./delete-answer-comment"
+import { NotAllowedError } from "./errors/not-allowed-error"
 
 let inMemoryAnswersCommentsRepository: InMemoryAnswersCommentsRepository
 let sut: AnswerCommentUseCase
@@ -27,15 +28,16 @@ describe('Delete Answer Comment Use Case', () => {
   it('should not be able delete another user answer comment', async () => {
     const answerComment = makeAnswerComment({
       authorId: new UniqueEntityID('author-01')
-    }, new UniqueEntityID('answer-comment-01'))
+    })
 
     await inMemoryAnswersCommentsRepository.create(answerComment)
 
-    expect(async () => {
-      return await sut.execute({
-        answerCommentId: 'answer-comment-02',
-        authorId: 'author-01'
-      })
-    }).rejects.toBeInstanceOf(Error)
+    const result = await sut.execute({
+      answerCommentId: answerComment.id.toString(),
+      authorId: 'author-02'
+    })
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(NotAllowedError)
   })
 })

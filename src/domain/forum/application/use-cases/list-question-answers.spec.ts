@@ -23,9 +23,9 @@ describe('List Question Answer', () => {
       questionId: new UniqueEntityID('question-02')
     }))
 
-    const { answers } = await sut.execute({ questionId: 'question-01', page: 1 })
+    const result = await sut.execute({ questionId: 'question-01', page: 1 })
 
-    expect(answers).toHaveLength(2)
+    expect(result.value?.answers).toHaveLength(2)
   })
 
   it('Should be able a list paginated question answers', async () => {
@@ -35,8 +35,8 @@ describe('List Question Answer', () => {
       }))
     }
 
-    const { answers } = await sut.execute({ questionId: 'question-01', page: 2 })
+    const result = await sut.execute({ questionId: 'question-01', page: 2 })
 
-    expect(answers).toHaveLength(5)
+    expect(result.value?.answers).toHaveLength(5)
   })
 })

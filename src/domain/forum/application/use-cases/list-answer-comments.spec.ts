@@ -19,12 +19,14 @@ describe('List Answer Comments Use Case', () => {
     await inMemoryAnswersCommentsRepository.create(makeAnswerComment())
     await inMemoryAnswersCommentsRepository.create(makeAnswerComment())
 
-    const { answerComments } = await sut.execute({
+    const result = await sut.execute({
       answerId: 'answer-01',
       page: 1
     })
 
-    expect(answerComments).toHaveLength(1)
+    expect(result.isRight()).toBe(true)
+    expect(result.value?.answerComments).toHaveLength(1)
+
   })
 
   it('should be able list paginated a answer comments', async () => {
@@ -34,8 +36,8 @@ describe('List Answer Comments Use Case', () => {
       )
     }
 
-    const { answerComments } = await sut.execute({ answerId: 'answer-01', page: 2})
+    const result = await sut.execute({ answerId: 'answer-01', page: 2})
 
-    expect(answerComments).toHaveLength(5)
+    expect(result.value?.answerComments).toHaveLength(5)
   })
 })
