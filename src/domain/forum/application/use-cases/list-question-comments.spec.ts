@@ -19,12 +19,12 @@ describe('List Question Comments Use Case', () => {
     await inMemoryQuestionCommentsRepository.create(MakeQuestionComment())
     await inMemoryQuestionCommentsRepository.create(MakeQuestionComment())
 
-    const { questionComments } = await sut.execute({
+    const result = await sut.execute({
       questionId: 'question-01',
       page: 1
     })
 
-    expect(questionComments).toHaveLength(1)
+    expect(result.value?.questionComments).toHaveLength(1)
   })
 
   it('should be able list paginated a question comments', async () => {
@@ -34,8 +34,8 @@ describe('List Question Comments Use Case', () => {
       )
     }
 
-    const { questionComments } = await sut.execute({ questionId: 'question-01', page: 2})
+    const result = await sut.execute({ questionId: 'question-01', page: 2})
 
-    expect(questionComments).toHaveLength(5)
+    expect(result.value?.questionComments).toHaveLength(5)
   })
 })
