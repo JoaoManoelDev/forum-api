@@ -4,8 +4,8 @@ import { UniqueEntityID } from "@/core/entities/unique-entity-id"
 
 interface AnswerProps {
   content: string
-  authorId: string
-  questionId: string
+  authorId: UniqueEntityID
+  questionId: UniqueEntityID
   createdAt: Date
   updatedAt?: Date
 }
