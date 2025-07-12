@@ -11,6 +11,10 @@ interface AnswerProps {
 }
 
 export class Answer extends Entity<AnswerProps> {
+  get content() {
+    return this.props.content
+  }
+
   static create(
     props: Optional<AnswerProps, 'createdAt'>,
     id?: UniqueEntityID
